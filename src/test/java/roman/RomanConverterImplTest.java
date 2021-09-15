@@ -1,6 +1,7 @@
 package roman;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -32,4 +33,14 @@ class RomanConverterImplTest {
         assertEquals("I", converter.toRoman(1));
     }
 
+    @Test
+    void fromRomaninvalid() {
+        assertThrows(IllegalArgumentException.class,
+                () -> converter.fromRoman("b"));
+    }
+
+    @Test
+    void fromRomanValid() {
+        assertEquals(1, converter.fromRoman("I"));
+    }
 }
